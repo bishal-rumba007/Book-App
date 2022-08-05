@@ -1,3 +1,5 @@
+import 'book.dart';
+
 final bookData = [
   {
     'title': 'Six of Crows',
@@ -49,30 +51,30 @@ final bookData = [
 
 List<Book> moreBooks = bookData.map((e) => Book.fromJson(e)).toList();
 
-class Book {
-
-  final String imageUrl;
-  final String title;
-  final String overView;
-  final String rating;
-  final String genreType;
-
-  Book({
-    required this.title,
-    required this.rating,
-    required this.overView,
-    required this.imageUrl,
-    required this.genreType
-  });
-
-  factory Book.fromJson(Map<String, dynamic> json){
-    return Book(
-      imageUrl: json['imageUrl'],
-      title: json['title'],
-      genreType: json['genreType'],
-      overView: json['overView'],
-      rating: json['rating'],
-    );
-  }
-
-}
+// class Book {
+//
+//   final String imageUrl;
+//   final String title;
+//   final String overView;
+//   final String rating;
+//   final String genreType;
+//
+//   Book({
+//     required this.title,
+//     required this.rating,
+//     required this.overView,
+//     required this.imageUrl,
+//     required this.genreType
+//   });
+//
+//   factory Book.fromJson(Map<String, dynamic> json){
+//     return Book(
+//       imageUrl: json['imageUrl'],
+//       title: json['title'],
+//       genreType: json['genreType'],
+//       overView: json['overView'],
+//       rating: json['rating'],
+//     );
+//   }
+//
+// }

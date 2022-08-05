@@ -7,15 +7,10 @@ import '../models/book.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
-
-
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height  - MediaQuery.of(context).padding.top - 50;
+    final height = MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
     final width = MediaQuery.of(context).size.width;
-
-    print(height);
-    print(width);
     return Scaffold(
       backgroundColor: Color(0XFFF8F8F8),
       appBar: PreferredSize(
@@ -194,41 +189,46 @@ class HomePage extends StatelessWidget {
                   itemCount: moreBooks.length,
                   itemBuilder: (context, index) {
                     final booked = moreBooks[index];
-                    return Container(
-                      margin: EdgeInsets.only(right: 10),
-                      height: 200,
-                      width: 120,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            height: 180,
-                            width: 130,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Image.network(
-                                booked.imageUrl,
-                                fit: BoxFit.cover,
+                    return InkWell(
+                        onTap: (){
+                          Get.to(DetailPage(book: booked));
+                        },
+                      child: Container(
+                        margin: EdgeInsets.only(right: 10),
+                        height: 200,
+                        width: 120,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 180,
+                              width: 130,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Image.network(
+                                  booked.imageUrl,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
-                          ),
 
-                          SizedBox(height: 10,),
-                          Text(booked.title, textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 15,
+                            SizedBox(height: 10,),
+                            Text(booked.title, textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 15,
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 2,),
-                          Text(booked.genreType,
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0XFF007083),
-                            ),
-                          )
-                        ],
+                            SizedBox(height: 2,),
+                            Text(booked.genreType,
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0XFF007083),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     );
                   },

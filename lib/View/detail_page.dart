@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_start_again/View/Read_more.dart';
+import 'package:flutter_start_again/View/more_info.dart';
 import 'package:get/get.dart';
+import 'package:sizer/sizer.dart';
 import '../models/book.dart';
 
 
 class DetailPage extends StatelessWidget {
-
   final Book book;
   DetailPage({required this.book});
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       // appBar: PreferredSize(
       //   preferredSize: Size.fromHeight(280),
@@ -32,7 +35,7 @@ class DetailPage extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            height: 320,
+            height: height * 0.40,
             width: double.infinity,
             child: FittedBox(
               child: Image.network(book.imageUrl),
@@ -43,9 +46,9 @@ class DetailPage extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 10,),
             child: Column(
               children: [
-                SizedBox(height: 15,),
+                SizedBox(height: height * 0.01,),
                 Container(
-                  height: 70,
+                  height: height * 0.1,
                   width: double.infinity,
                   //color: Colors.lightBlueAccent,
                   child: Row(
@@ -54,7 +57,7 @@ class DetailPage extends StatelessWidget {
                         child: Text(
                           book.title,
                           style: TextStyle(
-                            fontSize: 25,
+                            fontSize: 18.4.sp,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -67,10 +70,10 @@ class DetailPage extends StatelessWidget {
                               child: Column(
                                 children: [
                                   Text(book.rating),
-                                  SizedBox(height: 6,),
+                                  SizedBox(height: height * 0.01),
                                   Text(book.genreType,
                                     style: TextStyle(
-                                      fontSize: 13,
+                                      fontSize: 10.sp,
                                       fontWeight: FontWeight.w500,
                                       color: Color(0XFF007083),
                                     ),
@@ -83,15 +86,15 @@ class DetailPage extends StatelessWidget {
                     ],
                   )
                 ),
-                SizedBox(height: 8,),
+                SizedBox(height: height * 0.01,),
                 Container(
-                  height: 200,
+                  height: height * 0.28,
                   width: double.infinity,
                   //color: Colors.lightBlueAccent,
                   child: Text(
                     book.overView,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 11.sp,
                       fontWeight: FontWeight.w500,
                       color: Colors.grey,
                     ),
@@ -99,14 +102,14 @@ class DetailPage extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(height: 10,),
+                //SizedBox(height: 10,),
                 Container(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TextButton(
                         style: TextButton.styleFrom(
-                          minimumSize: Size(170, 55),
+                          minimumSize: Size(width * 0.4, height * 0.07),
                           primary: Colors.white,
                           backgroundColor: Color(0XFF007083),
                           shape: RoundedRectangleBorder(
@@ -118,23 +121,25 @@ class DetailPage extends StatelessWidget {
                         },
                         child: Text('Read Book',
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 13.sp,
                               fontWeight: FontWeight.w400,
                             )
                         ),
                       ),
-                      SizedBox(width: 26,),
+                      SizedBox(width: width * 0.1,),
                       OutlinedButton(
-                          onPressed: (){},
+                          onPressed: (){
+                            Get.to(MoreInfo());
+                          },
                           style: OutlinedButton.styleFrom(
-                              minimumSize: Size(170, 55),
+                              minimumSize: Size(width * 0.4, height * 0.07),
                               shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             )
                           ),
                           child: Text('More info',
                             style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 13.sp,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.grey,
                             ),
@@ -144,7 +149,6 @@ class DetailPage extends StatelessWidget {
                     ],
                   ),
                 ),
-
 
               ],
             ),
