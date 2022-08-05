@@ -9,13 +9,15 @@ class ReadMore extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        leading: IconButton(onPressed: () => Navigator.pop(context, runtimeType),
-            icon: Icon(Icons.menu),
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context, runtimeType),
+          icon: Icon(Icons.menu),
         ),
-        title: Text('Namaste'),
+        title: Text('Namastey!'),
         actions: [
-          IconButton(onPressed: (){},
-              icon: Icon(Icons.check),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.check),
           )
         ],
       ),
@@ -24,10 +26,12 @@ class ReadMore extends StatelessWidget {
           children: [
             Container(
               height: 200,
-              child: Center(child: Text("Welcome to Reading section",
-              style: TextStyle(
+              child: Center(
+                child: Text(
+                  "Welcome to Reading section",
+                  style: TextStyle(
                     fontSize: 20,
-                fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
